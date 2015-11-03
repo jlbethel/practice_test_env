@@ -33,3 +33,22 @@
 
     }
   }
+
+
+  class ClockAngleUnitTests extends DrupalUnitTestCase {
+
+    public static function getInfo() {
+      return array(
+        'name' => "Clock Angle Unit Tests",
+        'description' => 'Unit tests for Clock Angle module',
+        'group' => 'Epicodus Example Tests',
+      );
+    }
+
+    function testAngleCalculator() {
+
+      $description = 'An angle is correctly calculated when user suplies the time';
+
+      $input
+    }
+  }

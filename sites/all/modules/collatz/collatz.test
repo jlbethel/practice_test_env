@@ -1,0 +1,16 @@
+<?php
+
+  class CollatzUnitTests extends DrupalUnitTestCase {
+
+    public static function getInfo() {
+      return array(
+        'name' => 'Collatz Module Unit Tests',
+        'desscription' => 'Unit Tests for Collatz module',
+        'group' => 'Epicodus Example Tests',
+      );
+    }
+
+    function testEvenNumber() {
+    
+    }
+  }

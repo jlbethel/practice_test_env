@@ -1,0 +1,7 @@
+name = Collatz Module
+description = Takes a user number and runs it through the Collatz Sequence
+core = 7.x
+package = Epicodus Examples
+files[] = collatz.module
+files[] = collatz.test
+dependencies = simpletest
