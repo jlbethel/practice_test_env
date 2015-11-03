@@ -1,0 +1,7 @@
+name = Clock Angle
+description = Determines the smaller angle between the hands of the clock
+packages = Epicodus Examples
+core = 7.x
+files[] = clock_angle.module
+files[] = clock_angle.test
+dependencis[] = simpletest

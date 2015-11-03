@@ -1,0 +1,8 @@
+name = Greeting
+description = Display greetings.
+package = Practice Modules
+core = 7.x
+files[] = greeting.module
+files[] = greeting.test
+dependencies[] = simpletest
+testing_api = 2.x

@@ -1,0 +1,8 @@
+
+name = title_case
+description = user puts in a sentence, and it is returned with capitalized  words such that are in a movie or book title.
+package = Epicodus Examples
+core = 7.x
+files [] = title_case.module
+files[] = title_case.test
+dependencies[] = simpletest

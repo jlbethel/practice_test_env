@@ -1,0 +1,35 @@
+<?php
+  class ClockAngleTests extends DrupalWebTestCase{
+
+    public static function getInfo() {
+      return array(
+        'name' => 'Clock Angle Functional Tests',
+        'description' => 'Tests Clock Angle module',
+        'group' => 'Epicodus Example Tests',
+      );
+    }
+
+    public function setUp() {
+      parent::setUp(array('clock_angle'));
+    }
+
+    public function testClockAngleNavigation() {
+      $this->drupalGet('clock_angle');
+      $this->assertText('Calculate Angle');
+    }
+
+    public function testClockAngleInput() {
+
+      $info = array();
+      $info['hour_hand'] = 5;
+      $info['minute_hand'] = 4;
+
+      $this->drupalPost('clock_angle', $info, t('Calculate Angle'));
+
+      $path['alias'] = 'calculated_angle';
+      path_save($path);
+
+      $this->assertText('Your angle is 128 degrees');
+
+    }
+  }
