@@ -24,6 +24,8 @@ function collatz_form() {
     '#title' => 'Number',
     '#type' => 'textfield',
     '#description' => t('Enter the Number you want put through the Collatz sequence.'),
+    '#element_validate' => array('element_validate_integer_positive'),
+    '#required' => TRUE,
   );
 
   $form['submit'] = array(
@@ -61,6 +63,6 @@ function collatz_form_submit($form, &$form_state) {
 
 function collatz_results() {
   $number_results = $_SESSION['number_output'];
-  $count_result = $_SESSION['count_output'];
+  $count_result = $_SESSION['count_result'];
   return '<p> Here is your sequence: ' . $number_results . '.</p> <p> It took ' . $count_result . ' step(s) to complete the sequence.</p>';
 }

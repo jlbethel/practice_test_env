@@ -42,3 +42,35 @@
 
     }
   }
+
+  class CollatzFunctionalTests extends DrupalWebTestCase{
+
+    public static function getInfo() {
+      return array(
+        'name' => 'Collatz Module Functional Tests',
+        'description' => 'Tests Collatz Module',
+        'group' => 'Epicodus Example Tests',
+      );
+    }
+
+    public function setUp() {
+      parent::setUp(array('collatz'));
+    }
+
+    public function testCollatzNavigation() {
+      $this->drupalGet('collatz');
+      $this->assertText('Calculate Collatz Sequence');
+    }
+
+    public function testCollatzFormInput() {
+      $info = array();
+      $info['user_number'] = 4;
+
+      $this->drupalPost('collatz', $info, t('Submit'));
+
+      $path['alias'] = 'collatz_result';
+      path_save($path);
+
+      $this->assertText('It took 2 step(s) to complete the sequence.');
+    }
+  }
