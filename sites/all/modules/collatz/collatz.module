@@ -36,14 +36,16 @@ function collatz_form() {
 function collatz_sequence($input) {
   $numbers_array = [];
   $collatz_number = $input;
-  while ($collatz_number >= 2){
-  if($collatz_number % 2 == 0) {
-    $collatz_number /=  2;
-    array_push($numbers_array, $collatz_number);
-  } else {
-    $collatz_number = ($collatz_number * 3) +1;
-    array_push($numbers_array, $collatz_number);
-  }
+  $count = 0;
+  while ($collatz_number != 1){
+    $count++;
+    if($collatz_number % 2 == 0) {
+      $collatz_number /=  2;
+      array_push($numbers_array, $collatz_number);
+    } else {
+      $collatz_number = ($collatz_number * 3) +1;
+      array_push($numbers_array, $collatz_number);
+    }
 }
 return $numbers_array;
 }
@@ -52,12 +54,13 @@ function collatz_form_submit($form, &$form_state) {
   $user_number = $form_state['values']['user_number'];
   $result = collatz_sequence($user_number);
   $imploded_result = implode(", ", $result);
-  $_SESSION['output'] = $imploded_result;
-
+  $_SESSION['number_output'] = $imploded_result;
+  $_SESSION['count_result'] = count($result);
   $form_state['redirect'] = 'collatz_result';
 }
 
 function collatz_results() {
-  $results = $_SESSION['output'];
-  return '<p> Here is your sequence:' . $results . '</p>';
+  $number_results = $_SESSION['number_output'];
+  $count_result = $_SESSION['count_output'];
+  return '<p> Here is your sequence: ' . $number_results . '.</p> <p> It took ' . $count_result . ' step(s) to complete the sequence.</p>';
 }

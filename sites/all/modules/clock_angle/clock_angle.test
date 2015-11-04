@@ -45,10 +45,5 @@
       );
     }
 
-    function testAngleCalculator() {
 
-      $description = 'An angle is correctly calculated when user suplies the time';
-
-      $input
-    }
   }

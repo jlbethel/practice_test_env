@@ -5,12 +5,40 @@
     public static function getInfo() {
       return array(
         'name' => 'Collatz Module Unit Tests',
-        'desscription' => 'Unit Tests for Collatz module',
+        'description' => 'Unit Tests for Collatz module',
         'group' => 'Epicodus Example Tests',
       );
     }
 
-    function testEvenNumber() {
-    
+    function testCollatzSequence() {
+      //Start with even input
+      $description = 'Starting with an even number will run through sequence correctly';
+      $input = 4;
+      $result = collatz_sequence($input);
+      $expected_output = [2, 1];
+      $this->assertEqual($result, $expected_output, $description);
+
+      //start with odd input
+      $description = 'Starting with an odd number will run through sequence correctly';
+      $input = 3;
+      $result = collatz_sequence($input);
+      $expected_output = [10, 5, 16, 8, 4, 2, 1];
+      $this->assertEqual($result, $expected_output, $description);
+
+      //test large number
+      $description = 'A large (3 digits) number will not break function ';
+      $input = 150;
+      $result = collatz_sequence($input);
+      $expected_output = [75, 226, 113, 340, 170, 85, 256, 128, 64, 32, 16, 8, 4, 2, 1];
+      $this->assertEqual($result, $expected_output, $description);
+
+      //test steps
+      $description = "The appropriate count of steps is displayed";
+      $input = 4;
+      $non_counted_sequence = collatz_sequence($input);
+      $result = count($non_counted_sequence);
+      $expected_output = 2;
+      $this->assertEqual($result, $expected_output, $description);
+
     }
   }
